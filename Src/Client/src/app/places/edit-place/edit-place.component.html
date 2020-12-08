@@ -1,0 +1,66 @@
+<form [formGroup]="sectionForm" (ngSubmit)="onSubmit()">
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Title</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input
+            formControlName="title"
+            type="text"
+            placeholder="Enter title here.."
+            #title
+            [ngClass]="{
+              'is-invalid': submitted && sectionFormControls.title.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && sectionFormControls.title.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="sectionFormControls.title.errors.required">
+              Title is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Description</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <textarea
+            type="textarea"
+            formControlName="description"
+            placeholder="Enter description here..."
+            #description
+            [ngClass]="{
+              'is-invalid': submitted && sectionFormControls.description.errors
+            }"
+          ></textarea>
+          <div
+            *ngIf="submitted && sectionFormControls.description.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="sectionFormControls.description.errors.required">
+              Description is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-right">
+    <p class="control">
+      <button>Submit</button>
+    </p>
+    <p class="control">
+      <a routerLink="../">Back</a>
+    </p>
+  </div>
+</form>
